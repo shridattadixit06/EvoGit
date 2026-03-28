@@ -17,7 +17,7 @@ if cmd[0]=="com":
                 data = f.read(65536)
                 if not data:
                     break
-            sha1.update(data)
+                sha1.update(data)
         hashed = sha1.hexdigest()
         fle_path = "commits\\"+str(hashed)
         newfile = open(fle_path,'w')

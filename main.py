@@ -1,13 +1,13 @@
 import os
 import hashlib
 cmd = input()
+cmd = cmd.split()
 if cmd[0]=="com":
     if cmd[1]=="add":
         try:
             os.mkdir("commits")
-            print(f"Directory 'commits' created successfully.")
         except FileExistsError:
-            print(f"Directory 'commits' already exists.")
+            pass
         except FileNotFoundError:
             print(f"Parent directory does not exist. Use os.makedirs() for nested directories.")
         fle=cmd[2]
@@ -18,8 +18,9 @@ if cmd[0]=="com":
                 if not data:
                     break
             sha1.update(data)
-        hashed = sha1.digest()
-        fle_path = "commits//"+str(hashed)
+        hashed = sha1.hexdigest()
+        fle_path = "commits\\"+str(hashed)
         newfile = open(fle_path,'w')
+        fle = open(fle,'r')
         for line in fle:
             newfile.write(line)

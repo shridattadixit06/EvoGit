@@ -24,3 +24,4 @@ if cmd[0]=="com":
         fle = open(fle,'r')
         for line in fle:
             newfile.write(line)
+            print(line)
